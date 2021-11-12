@@ -15,7 +15,6 @@ function App() {
     .then(setListings)
   }, [])
 
-  
 
   function handleDeleteListing(id){
     fetch(URL + `/${id}`, {method:"DELETE"})
@@ -23,10 +22,14 @@ function App() {
     setListings(updatedListings)
   }
 
+  const displayedListings = listings.filter((listing) => { 
+    return listing.description.toLowerCase().includes(search.toLowerCase())
+  })
+
   return (
     <div className="app">
       <Header search={search} setSearch={setSearch}/>
-      <ListingsContainer listings={listings} onDeleteListing={handleDeleteListing} />
+      <ListingsContainer listings={displayedListings} onDeleteListing={handleDeleteListing} />
     </div>
   );
 }

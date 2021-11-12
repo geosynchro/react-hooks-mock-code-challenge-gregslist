@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 function ListingCard({id, description, image, location, onDeleteListing}) {
-  const [isFavorite, setIsFavorite]=useState(true)
+  const [isFavorite, setIsFavorite]=useState(false)
 
   function handleFavorite(){
     setIsFavorite((currFav) => !currFav)
