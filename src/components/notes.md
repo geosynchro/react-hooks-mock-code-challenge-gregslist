@@ -2,7 +2,7 @@
 as a user i can:
 1[x] see all listings
 2[x] favorite and unfavorite any listing
-3[] remove a listing from a page by clicking icon, shoudl persist on refresh
+3[x] remove a listing from a page by clicking icon, should persist on refresh
 4[] Search for listings by their name
 
 

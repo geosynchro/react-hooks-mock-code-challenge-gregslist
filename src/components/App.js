@@ -4,23 +4,29 @@ import ListingsContainer from "./ListingsContainer";
 
 
 function App() {
-  // const URL = `http://localhost:6001/listings`
+  const URL = "http://localhost:6001/listings"
   const [search, setSearch] = useState("")
   const [listings, setListings] = useState([])
 
 
   useEffect(() => {
-     fetch(`http://localhost:6001/listings`)
+     fetch(URL)
     .then(res => res.json())
     .then(setListings)
   }, [])
 
-  const listingsToDisplay = listings
+  
+
+  function handleDeleteListing(id){
+    fetch(URL + `/${id}`, {method:"DELETE"})
+    const updatedListings = listings.filter((listing) => listing.id !== id)
+    setListings(updatedListings)
+  }
 
   return (
     <div className="app">
       <Header search={search} setSearch={setSearch}/>
-      <ListingsContainer listings={listingsToDisplay} setListings={setListings}/>
+      <ListingsContainer listings={listings} onDeleteListing={handleDeleteListing} />
     </div>
   );
 }
